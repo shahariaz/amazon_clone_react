@@ -13,3 +13,48 @@
   margin: 0 20px;
   margin-top: 18px;
 }
+
+.header_search {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  border-radius: 24px;
+}
+.header_searchIn {
+  height: 12px;
+  padding: 10px;
+  border: none;
+  width: 100%;
+}
+
+.header_searchIcon {
+  background-color: #cd9042;
+  height: 22px !important;
+  padding: 5px;
+}
+.header_nav {
+  display: flex;
+  justify-content: space-evenly;
+}
+.header_option {
+  color: white;
+  display: flex;
+  flex-direction: column;
+  margin: 0 10px;
+}
+.header_optionLineOne {
+  font-size: 10px;
+}
+.header_optionLinetwo {
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.header_optionBasket {
+  display: flex;
+  align-items: center;
+  color: white;
+}
+.header_basketCount {
+  margin: 0 10px;
+}

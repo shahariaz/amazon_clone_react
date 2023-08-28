@@ -1,4 +1,6 @@
 import "./Header.css";
+import SearchIcon from "@mui/icons-material/Search";
+import ShoppingBasketIcon from "@mui/icons-material/ShoppingBasket";
 const Header = () => {
   return (
     <div className="header">
@@ -8,22 +10,26 @@ const Header = () => {
         alt=""
       />
       <div className="header_search">
-        <input className="header_serachIn" type="text" />
+        <input className="header_searchIn" type="text" />
+        <SearchIcon className="header_searchIcon" />
       </div>
       <div className="header_nav">
         <div className="header_option">
           <span className="header_optionLineOne"> Hello</span>
-          <span className="header_optionLineOne"> Sing in </span>
+          <span className="header_optionLinetwo"> Sing in </span>
         </div>
         <div className="header_option">
           <span className="header_optionLineOne"> Returns </span>
-          <span className="header_optionLineOne">& Orders </span>
+          <span className="header_optionLinetwo">& Orders </span>
         </div>
         <div className="header_option">
           <span className="header_optionLineOne"> Your</span>
-          <span className="header_optionLineOne"> Prime </span>
+          <span className="header_optionLinetwo"> Prime </span>
         </div>
-        <div className="header_option"></div>
+        <div className="header_optionBasket">
+          <ShoppingBasketIcon />
+          <span className="header_optionLinetwo header_basketCount">0</span>
+        </div>
       </div>
     </div>
   );
