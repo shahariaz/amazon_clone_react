@@ -4,6 +4,7 @@ import "./App.css";
 import Header from "./components/Header/Header";
 import Home from "./components/Home/Home";
 import Checkout from "./components/Checkout/Checkout";
+import Login from "./components/LogingPage/Login";
 
 function App() {
   //BEM
@@ -13,7 +14,7 @@ function App() {
         <Routes>
           <Route path="/" element={[<Header />, <Home />]} />
           <Route path="/checkout" element={[<Header />, <Checkout />]} />
-          <Route path="/login" />
+          <Route path="/login" element={<Login />} />
         </Routes>
       </div>
     </Router>
