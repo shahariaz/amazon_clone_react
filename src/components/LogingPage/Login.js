@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import "./Login.css";
 import { useState } from "react";
+import { auth } from "../../firebase";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -12,6 +13,13 @@ const Login = () => {
   const register = (e) => {
     e.preventDefault();
     //some fancy firebase stuff
+    auth
+      .createUserWithEmailAndPassword(email, password)
+      .then((auth) => {
+        //it succesfully registered
+        console.log(auth);
+      })
+      .catch((err) => alert(err.message));
   };
   return (
     <div className="login">
