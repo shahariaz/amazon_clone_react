@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import { useStateValue } from "../Context/StateProvider";
 import { getAuth, signOut } from "firebase/auth";
 const Header = () => {
-  const [{ basket, user }, dispatch] = useStateValue();
+  const [{ basket, user }] = useStateValue();
   const handleAuth = () => {
     if (user) {
       const auth = getAuth();
@@ -37,7 +37,9 @@ const Header = () => {
       <div className="header_nav">
         <Link to={!user && "/login"}>
           <div onClick={handleAuth} className="header_option">
-            <span className="header_optionLineOne"> Hello</span>
+            <span className="header_optionLineOne">
+              {user ? `hello ${user.email}` : "hello"}
+            </span>
             <span className="header_optionLinetwo">
               {" "}
               {user ? "Sing Out" : "Sing In"}{" "}

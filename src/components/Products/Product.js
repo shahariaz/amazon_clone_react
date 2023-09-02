@@ -16,7 +16,6 @@ function Product({ id, title, image, price, rating }) {
         rating: rating,
       },
     });
-    console.log(basket);
   };
   return (
     <div className="product">
