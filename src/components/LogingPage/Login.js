@@ -1,25 +1,43 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./Login.css";
 import { useState } from "react";
 import { auth } from "../../firebase";
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+} from "firebase/auth";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
   const singIn = (e) => {
     e.preventDefault();
-    //some fancy firebase stuff
+    // for login
+    signInWithEmailAndPassword(auth, email, password)
+      .then((auth) => {
+        console.log(auth);
+        if (auth) {
+          // if successfully signed in, redirect the new user to the home page
+          navigate("/");
+        }
+      })
+      .catch((error) => alert(error.message));
   };
+
   const register = (e) => {
     e.preventDefault();
     //some fancy firebase stuff
-    auth
-      .createUserWithEmailAndPassword(email, password)
+    createUserWithEmailAndPassword(auth, email, password)
       .then((auth) => {
-        //it succesfully registered
         console.log(auth);
+        if (auth) {
+          // if successfully created a new user with email and password
+          // redirect the new user to the home page
+          navigate("/");
+        }
       })
-      .catch((err) => alert(err.message));
+      .catch((error) => alert(error.message));
   };
   return (
     <div className="login">

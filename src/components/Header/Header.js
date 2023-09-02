@@ -4,8 +4,23 @@ import ShoppingBasketIcon from "@mui/icons-material/ShoppingBasket";
 
 import { Link } from "react-router-dom";
 import { useStateValue } from "../Context/StateProvider";
+import { getAuth, signOut } from "firebase/auth";
 const Header = () => {
-  const [{ basket }, dispatch] = useStateValue();
+  const [{ basket, user }, dispatch] = useStateValue();
+  const handleAuth = () => {
+    if (user) {
+      const auth = getAuth();
+      signOut(auth)
+        .then(() => {
+          // Sign-out successful.
+        })
+        .catch((error) => {
+          // An error happened.
+          window.alert("An error occurred");
+        });
+    }
+  };
+
   return (
     <div className="header">
       <Link to="/">
@@ -20,10 +35,13 @@ const Header = () => {
         <SearchIcon className="header_searchIcon" />
       </div>
       <div className="header_nav">
-        <Link to="/login">
-          <div className="header_option">
+        <Link to={!user && "/login"}>
+          <div onClick={handleAuth} className="header_option">
             <span className="header_optionLineOne"> Hello</span>
-            <span className="header_optionLinetwo"> Sing in </span>
+            <span className="header_optionLinetwo">
+              {" "}
+              {user ? "Sing Out" : "Sing In"}{" "}
+            </span>
           </div>
         </Link>
         <div className="header_option">
